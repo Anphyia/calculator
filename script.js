@@ -27,3 +27,19 @@ function divide(a, b) {
     const divisionOperator = "/";
     return (dividend / divisor).toFixed(3);
 }
+
+function operate(operator, a, b) {
+    switch (operator) {
+        case "+":
+            return add(a, b);
+        case "-":
+            return subtract(a, b);
+        case "*":
+            return multiply(a, b);
+        case "/":
+            return divide(a, b);
+        default:
+            throw new Error("Invalid operator: " + operator);
+    }
+}
+
