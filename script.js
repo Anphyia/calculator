@@ -38,6 +38,7 @@ function divide(a, b) {
 function operate(operator, a, b) {
     a = Number(a);
     b = Number(b);
+
     switch (operator) {
         case "+":
             return add(a, b);
@@ -73,6 +74,42 @@ function clearCalculator() {
     updateDisplay();
 }
 
+function calculate() {
+    if (operator === "=") {
+        return;
+    }
+
+    if (clicked === "clear") {
+        clearCalculator();
+        return;
+    }
+
+    if (clicked === "=") {
+        if (operator !== "" && secondNumber !== "") {
+            const result = operate(operator, firstNumber, secondNumber);
+            firstNumber = result;
+            secondNumber = "";
+            operator = "";
+            updateDisplay();
+        }
+    } else if (!isNaN(clicked) || clicked === ".") {
+        if (operator === "") {
+            firstNumber += clicked;
+        } else {
+            secondNumber += clicked;
+        }
+        updateDisplay();
+    } else {
+        if (operator !== "") {
+            const result = operate(operator, firstNumber, secondNumber);
+            firstNumber = result;
+            secondNumber = "";
+        }
+        operator = clicked;
+        updateDisplay();
+    }
+}
+
 function setupEventListeners() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
@@ -81,6 +118,5 @@ function setupEventListeners() {
         });
     });
 }
-
 
 setupEventListeners();
