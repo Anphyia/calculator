@@ -1,5 +1,9 @@
 "use strict";
 
+let clicked = "";
+const buttons = document.querySelectorAll("button"); 
+const displayDiv = document.getElementById("display")
+
 function add(a, b) {
     const addend1 = a;
     const addend2 = b;
@@ -43,3 +47,20 @@ function operate(operator, a, b) {
     }
 }
 
+
+function display() {
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            clicked = button.id;
+
+            if(clicked == "clear") {
+                displayDiv.removeChild(displayDiv.firstChild);
+            } else {
+                displayDiv.textContent = `${clicked}`;
+            }
+
+        });
+    });
+}
+
+display();
