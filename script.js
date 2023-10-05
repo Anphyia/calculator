@@ -1,6 +1,9 @@
 "use strict";
 
 let clicked = "";
+let firstNumber = "";
+let secondNumber = "";
+let operator = "";
 const buttons = document.querySelectorAll("button"); 
 const displayDiv = document.getElementById("display")
 
@@ -33,6 +36,8 @@ function divide(a, b) {
 }
 
 function operate(operator, a, b) {
+    a = Number(a);
+    b = Number(b);
     switch (operator) {
         case "+":
             return add(a, b);
@@ -48,14 +53,16 @@ function operate(operator, a, b) {
 }
 
 
-function display() {
-    buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-            clicked = button.id;
-    
-            displayDiv.textContent = `${clicked}`;
-        });
-    });
+function updateDisplay() {
+    if (firstNumber !== "") {
+        if (operator !== "") {
+            displayDiv.textContent = firstNumber + " " + operator + " " + secondNumber;
+        } else {
+            displayDiv.textContent = firstNumber;
+        }
+    } else {
+        displayDiv.textContent = "";
+    }
 }
 
 function clearCalculator() {
@@ -66,4 +73,14 @@ function clearCalculator() {
     updateDisplay();
 }
 
-display();
+function setupEventListeners() {
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            clicked = button.id;
+            calculate();
+        });
+    });
+}
+
+
+setupEventListeners();
