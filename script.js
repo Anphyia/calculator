@@ -52,15 +52,18 @@ function display() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             clicked = button.id;
-
-            if(clicked == "clear") {
-                displayDiv.removeChild(displayDiv.firstChild);
-            } else {
-                displayDiv.textContent = `${clicked}`;
-            }
-
+    
+            displayDiv.textContent = `${clicked}`;
         });
     });
+}
+
+function clearCalculator() {
+    firstNumber = "";
+    secondNumber = "";
+    operator = "";
+    clicked = "";
+    updateDisplay();
 }
 
 display();
