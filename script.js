@@ -8,19 +8,19 @@ const buttons = document.querySelectorAll("button");
 const displayDiv = document.getElementById("display")
 
 function add(a, b) {
-    return addend1 + addend2;
+    return a + b;
 }
 
 function subtract(a, b) {
-    return minuend - subtrahend;
+    return a - b;
 }
 
 function multiply(a, b) {
-    return multiplier * multiplicand;
+    return a * b;
 }
 
 function divide(a, b) {
-    return (dividend / divisor).toFixed(3);
+    return (a / b).toFixed(3);
 }
 
 function operate(operator, a, b) {
