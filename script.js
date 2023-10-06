@@ -53,7 +53,6 @@ function operate(operator, a, b) {
     }
 }
 
-
 function updateDisplay() {
     if (firstNumber !== "") {
         if (operator !== "") {
@@ -86,16 +85,30 @@ function calculate() {
 
     if (clicked === "=") {
         if (operator !== "" && secondNumber !== "") {
+            if (operator === "/" && secondNumber === "0") {
+                displayDiv.textContent = "Cannot divide by zero.";
+                return;
+            }
             const result = operate(operator, firstNumber, secondNumber);
             firstNumber = result;
             secondNumber = "";
             operator = "";
-            updateDisplay();
+            if (result === "0") {
+                displayDiv.textContent = "";
+            } else {
+                updateDisplay();
+            }
         }
     } else if (!isNaN(clicked) || clicked === ".") {
         if (operator === "") {
+            if (firstNumber === "0" && clicked !== ".") {
+                firstNumber = "";
+            }
             firstNumber += clicked;
         } else {
+            if (secondNumber === "0" && clicked !== ".") {
+                secondNumber = "";
+            }
             secondNumber += clicked;
         }
         updateDisplay();
@@ -120,3 +133,6 @@ function setupEventListeners() {
 }
 
 setupEventListeners();
+
+
+//TODO infinity problem after repeatedly * + * + *
