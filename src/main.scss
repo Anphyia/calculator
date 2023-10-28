@@ -1,0 +1,12 @@
+.btn {
+    width: 8vh; /* Set the desired width */
+    height: 8vh; /* Set the desired height */
+    font-size: 1.5rem; /* Adjust the font size */
+    margin: 0.2rem; /* Add some margin for spacing */
+}
+
+#display {
+    width: 35vh; /* Set the desired width */
+}
+
+@import "../node_modules/bootstrap/scss/bootstrap";

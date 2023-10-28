@@ -49,7 +49,7 @@ function updateDisplay() {
             displayDiv.textContent = firstNumber;
         }
     } else {
-        displayDiv.textContent = "";
+        displayDiv.textContent = "0";
     }
 }
 
